@@ -1,0 +1,42 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,initial-scale=1.0,width=device-width" />
+	<meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+	<title>Hello APP</title>
+	<link rel="stylesheet" type="text/css" href="../css/api.css" />
+	<link rel="stylesheet" type="text/css" href="../css/aa.css" />
+	<style type="text/css">
+		body,html{
+			background: #fff;
+		}
+
+	</style>
+</head>
+<body>
+
+</body>
+<script type="text/javascript" src="../script/api.js"></script>
+<script type="text/javascript" src="../script/common.js"></script>
+<script type="text/javascript" src="../script/public.js"></script>
+
+<script type="text/javascript">
+	apiready = function() {
+		api.alert({
+				title: '提示',
+				msg: '网络不给力哦,请检查您的网络设置',
+				buttons: ['再次尝试']
+		}, function(ret, err) {
+				btn();
+		});
+	};
+	function btn(){
+		api.execScript({
+		    name: 'root',
+		    script: 'init();'
+		});
+	}
+
+</script>
+</html>

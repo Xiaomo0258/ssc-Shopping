@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0" />
+    <title>title</title>
+    <link rel="stylesheet" type="text/css" href="../css/api.css" />
+    <link rel="stylesheet" type="text/css" href="../css/aa.css" />
+    <style>
+        html,
+        body {
+            background-color: #fff;
+            height: 100%;
+            width: 100%;
+        }
+
+        header {
+            background: #fff;
+            width: 100%;
+        }
+        .aui-bar-tab-label{
+          font-size: 0.8rem !important;
+        }
+        .aui-bar-tab-item:active {
+            color: red !important;
+        }
+    </style>
+</head>
+
+<body>
+    <header id="header"></header>
+    <footer class="aui-bar aui-bar-tab aui-hr" id="footer">
+        <div class="aui-bar-tab-item" tapmode id="home" onclick="active(0)">
+            <div class="aui-bar-tab-label">首页</div>
+        </div>
+        <div class="aui-bar-tab-item" tapmode id="re" onclick="active(1)">
+            <div class="aui-bar-tab-label">刷新</div>
+        </div>
+        <div class="aui-bar-tab-item" tapmode id="go" onclick="active(2)">
+            <div class="aui-bar-tab-label">前进</div>
+        </div>
+        <div class="aui-bar-tab-item" tapmode id="back" onclick="active(3)">
+            <div class="aui-bar-tab-label">后退</div>
+        </div>
+        <div class="aui-bar-tab-item" tapmode id="exit" onclick="active(4)">
+            <div class="aui-bar-tab-label">退出</div>
+        </div>
+    </footer>
+</body>
+<script type="text/javascript" src="../script/api.js"></script>
+<script type="text/javascript" src="../script/common.js"></script>
+<script type="text/javascript" src="../script/public.js"></script>
+
+<script type="text/javascript">
+    apiready = function() {
+        //网络监听
+        listenNet();
+        api.parseTapmode();
+        $api.fixStatusBar($api.byId("header"));
+        $api.fixTabBar($api.byId("footer"));
+        window.u = api.pageParam.u;
+        open(u);
+    };
+
+    function active(i) {
+        switch (i) {
+            case 0:
+                api.execScript({
+                    frameName: 'addressIndex',
+                    script: "window.location.href = \"" + u + "\";"
+                });
+                break;
+            case 1:
+                api.execScript({
+                    frameName: 'addressIndex',
+                    script: "window.location.reload();"
+                });
+                break;
+            case 2:
+                api.execScript({
+                    frameName: 'addressIndex',
+                    script: "window.history.go(1);"
+                });
+                break;
+            case 3:
+                api.execScript({
+                    frameName: 'addressIndex',
+                    script: "window.history.go(-1);"
+                });
+                break;
+            case 4:
+                api.closeWidget();
+                break;
+            default:
+                window.location.href = u;
+        }
+    }
+
+    function open(u) {
+        //console.log(api.winHeight-$api.dom("#footer").offsetHeight);
+        api.openFrame({
+            name: 'addressIndex',
+            url: u,
+            rect: {
+                marginLeft: 0,
+                marginTop: $api.dom("#header").offsetHeight,
+                marginBottom: $api.dom("#footer").offsetHeight,
+                marginRight: 0
+            },
+            bounces: false,
+            bgColor: "#fff",
+            showProgress: true,
+            progress: {
+                type: "default", //加载进度效果类型，默认值为default，取值范围为default|page，default等同于showProgress参数效果；为page时，进度效果为仿浏览器类型，固定在页面的顶部
+                title: "", //type为default时显示的加载框标题
+                text: "加载中...", //type为default时显示的加载框内容
+                color: "#45C01A" //type为page时进度条的颜色，默认值为#45C01A，支持#FFF，#FFFFFF，rgb(255,255,255)，rgba(255,255,255,1.0)等格式
+            },
+        });
+    }
+</script>
+
+</html>

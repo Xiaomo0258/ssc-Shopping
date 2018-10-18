@@ -1,0 +1,74 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,initial-scale=1.0,width=device-width" />
+    <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+    <title>Hello APP</title>
+    <link rel="stylesheet" type="text/css" href="../css/api.css" />
+    <link rel="stylesheet" type="text/css" href="../css/aa.css" />
+
+    <style type="text/css">
+        html,
+        body {
+            background-color: #fff;
+            height: 100%;
+            width: 100%;
+        }
+
+        header {
+            background: #fff !important;
+            width: 100%;
+        }
+
+        footer {
+            background: #fff;
+            width: 100%;
+            position: fixed;
+            bottom: 0;
+        }
+    </style>
+</head>
+
+<body>
+  <header id="header"></header>
+  <footer id="footer"></footer>
+</body>
+<script type="text/javascript" src="../script/api.js"></script>
+<script type="text/javascript" src="../script/common.js"></script>
+
+<script type="text/javascript">
+    apiready = function() {
+      listen();
+      $api.fixStatusBar($api.byId("header"));
+      $api.fixTabBar($api.byId("footer"));
+      window.u = api.pageParam.u;
+      var _closeWin = api.pageParam._winName ? api.pageParam._winName : "";
+      window.fName = 'frame'+u;
+      window.execName = "win"+u;
+      api.openFrame({
+          name: fName,
+          rect: {
+            marginLeft: 0,
+            marginTop: $api.dom("#header").offsetHeight,
+            marginBottom: $api.dom("#footer").offsetHeight,
+            marginRight: 0
+          },
+          url: u,
+          bounces: false,
+          bgColor: "#fff",
+          useWKWebView: false,
+          animation: {
+              type: "fade", //动画类型（详见动画类型常量）
+              subType: "from_right", //动画子类型（详见动画子类型常量）
+              duration: 300
+          }
+      });
+      frameClient(fName,execName,_closeWin);
+    };
+
+
+</script>
+
+</html>

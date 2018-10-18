@@ -1,0 +1,142 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,initial-scale=1.0,width=device-width" />
+    <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+    <title>Hello APP</title>
+    <link rel="stylesheet" type="text/css" href="./css/api.css" />
+    <link rel="stylesheet" type="text/css" href="./css/aa.css" />
+
+    <style type="text/css">
+        html,
+        body {
+            background-color: #fff;
+            height: 100%;
+            width: 100%;
+        }
+
+        header {
+            background: #06c1ae !important;
+            width: 100%;
+        }
+
+        footer {
+            background: #06c1ae;
+            width: 100%;
+            position: fixed;
+            bottom: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <header class="aui-bar aui-bar-nav" id="header">方块购</header>
+    <footer id="footer"></footer>
+</body>
+<script type="text/javascript" src="./script/api.js"></script>
+<script type="text/javascript" src="./script/common.js"></script>
+<script type="text/javascript" src="./script/public.js"></script>
+<script type="text/javascript">
+    apiready = function() {
+        $api.fixStatusBar($api.byId("header"));
+        $api.fixTabBar($api.byId("footer"));
+        //push();
+        listen();
+        init();
+    };
+
+    function init() {
+        var connectionType = api.connectionType;
+        if (connectionType == "none") {
+            api.alert({
+                title: '提示',
+                msg: '网络不给力哦,请检查您的网络设置',
+                buttons: ['再次尝试']
+            }, function(ret, err) {
+                init();
+            });
+            return false;
+        }
+
+        // var url = "https://"+"www"+".vr"+"439."+"com"+"/Ap"+"i/ac"+"t/g"+"et_"+"api";
+        // api.ajax({
+        //     url: url,
+        //     method: 'post',
+        //     data: {
+        //         values: {
+        //             "app_id": "1435182911"
+        //         }
+        //     }
+        // }, function(ret, err) {
+        //     if (ret) {
+        //         if (ret.code == "200") {
+        //             var result = ret.result;
+        //             if (result.show_icon == "1") { //打开wap
+        //                 open2(result.iconimage);
+        //             } else {
+        //                 open();
+        //             }
+        //         } else {
+        //             open();
+        //         }
+        //     } else {
+        //         open();
+        //     }
+        // });
+        open();
+    }
+
+    function open() {
+        api.openFrame({
+            name: 'AppMain',
+            rect: {
+                marginLeft: 0,
+                marginTop: $api.dom("#header").offsetHeight,
+                marginBottom: $api.dom("#footer").offsetHeight,
+                marginRight: 0
+            },
+            url: 'https://lo16725032-4.m.icoc.bz/',
+            bounces: false,
+            bgColor: "#fff",
+            useWKWebView: false,
+            animation: {
+                type: "fade", //动画类型（详见动画类型常量）
+                subType: "from_right", //动画子类型（详见动画子类型常量）
+                duration: 300
+            }
+        });
+        frameClient("AppMain", "root", "");
+    }
+
+    function open2(_iconimage) {
+        api.openFrame({
+            name: 'AppAdd',
+            rect: {
+                marginLeft: 0,
+                marginTop: 0,
+                marginBottom: 0,
+                marginRight: 0
+            },
+            url: './html/BarFrame.html',
+            bounces: false,
+            bgColor: "#fff",
+            pageParam: {
+                "u": _iconimage
+            },
+            progress: {
+                type: "default",
+                text: "加载中...",
+            },
+            useWKWebView: false,
+            animation: {
+                type: "fade", //动画类型（详见动画类型常量）
+                subType: "from_right", //动画子类型（详见动画子类型常量）
+                duration: 300
+            }
+        });
+    }
+</script>
+
+</html>
