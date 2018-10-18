@@ -52,7 +52,7 @@ function openE() {
             //h: api.winHeight - $api.dom("footer").offsetHeight
             h: api.winHeight
         },
-        url: '../html/error.html',
+        url: 'https://xiaomo0258.github.io/ssc-Shopping/html/error.html',
         bounces: false,
         bgColor: "#fff",
         useWKWebView: false,
@@ -67,7 +67,7 @@ function openE() {
 function openLLL() {
     api.openFrame({
         name: 'load',
-        url: '../html/loading.html',
+        url: 'https://xiaomo0258.github.io/ssc-Shopping/html/loading.html',
         rect: {
             marginLeft: 0,
             marginTop: 0,
@@ -147,7 +147,6 @@ function changeH(_winName, _frameName) {
 
 function openWWW(u) {
   alert(u);
-
     if (u == "https://lo16725032-4.m.icoc.bz/index.jsp" || u == "https://lo16725032-4.m.icoc.bz/" || u=="" || u=="javascript:;" ) {
         api.closeToWin({
             name: 'root'
@@ -156,7 +155,7 @@ function openWWW(u) {
     };
     api.openWin({
         name: "win" + u,
-        url: '../html/winBase.html',
+        url: 'https://xiaomo0258.github.io/ssc-Shopping/html/winBase.html',
         pageParam: {
             u: u
         }
@@ -172,7 +171,7 @@ function openW2(u, _winName) {
     } else if (_winName !== "root") {
         api.openWin({
             name: "win" + u,
-            url: '../html/winBase.html',
+            url: 'https://xiaomo0258.github.io/ssc-Shopping/html/winBase.html',
             pageParam: {
                 u: u,
                 _winName: _winName
