@@ -52,7 +52,7 @@ function openE() {
             //h: api.winHeight - $api.dom("footer").offsetHeight
             h: api.winHeight
         },
-        url: 'widget://html/error.html',
+        url: '../html/error.html',
         bounces: false,
         bgColor: "#fff",
         useWKWebView: false,
@@ -67,7 +67,7 @@ function openE() {
 function openLLL() {
     api.openFrame({
         name: 'load',
-        url: 'widget://html/loading.html',
+        url: '../html/loading.html',
         rect: {
             marginLeft: 0,
             marginTop: 0,
@@ -153,7 +153,7 @@ function openWWW(u) {
     };
     api.openWin({
         name: "win" + u,
-        url: 'widget://html/winBase.html',
+        url: '../html/winBase.html',
         pageParam: {
             u: u
         }
@@ -168,7 +168,7 @@ function openW2(u, _winName) {
     } else if (_winName !== "root") {
         api.openWin({
             name: "win" + u,
-            url: 'widget://html/winBase.html',
+            url: '../html/winBase.html',
             pageParam: {
                 u: u,
                 _winName: _winName
