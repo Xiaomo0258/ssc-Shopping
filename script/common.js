@@ -109,6 +109,7 @@ function frameClient(frameName, _winName, _closeWin) {
                 }
                 break;
             case 4:
+                alert(ret.url);
                 openW2(ret.url, api.winName);
                 //closeLLL();
                 break;
