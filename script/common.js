@@ -125,7 +125,7 @@ function changeH(_winName, _frameName) {
     init += "var links = document.querySelectorAll('a');";
     init += "Array.prototype.forEach.call(links, function (link) {";
     init += "    link.addEventListener('click', function (evt) {";
-    init += "       evt.preventDefault();var _u = this.href;";
+    init += "       evt.preventDefault();var _u = this.href;alert(_u);";
     init += "       api.execScript({";
     init += "           name: '" + _winName + "',";
     init += "           script: 'openWWW(\"'+_u+'\")'";
