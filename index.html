@@ -7,21 +7,16 @@
 	<script type="text/javascript">
 // H5 plus事件处理
 function plusReady(){
+	plus.webview.open('http://m.weibo.cn/u/3196963860');
 }
 if(window.plus){
 	plusReady();
 }else{
 	document.addEventListener('plusready', plusReady, false);
 }
-
-// 创建并显示新窗口
-function openWebview(){
-	var w = plus.webview.open('http://m.weibo.cn/u/3196963860');
-}
 	</script>
 	</head>
 	<body>
-		打开Webview窗口<br/>
-		<button onclick="openWebview()">Open</button>
+		
 	</body>
 </html>
