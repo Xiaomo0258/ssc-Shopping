@@ -109,7 +109,7 @@ function frameClient(frameName, _winName, _closeWin) {
                 }
                 break;
             case 4:
-                alert(ret.url);
+
                 openW2(ret.url, api.winName);
                 //closeLLL();
                 break;
@@ -146,6 +146,7 @@ function changeH(_winName, _frameName) {
 }
 
 function openWWW(u) {
+  alert(u);
     if (u == "https://lo16725032-4.m.icoc.bz/index.jsp" || u == "https://lo16725032-4.m.icoc.bz/" || u=="" || u=="javascript:;" ) {
         api.closeToWin({
             name: 'root'
